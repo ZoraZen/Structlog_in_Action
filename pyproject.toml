@@ -1,0 +1,132 @@
+[tool.poetry]
+name = "structlog_template"
+version = "0.1.0"
+description = ""
+authors = ["zoraren <tyda1@vivaldi.net>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "3.11.*"
+structlog = "^22.1.0"
+asyncio = "^3.4.3"
+
+[tool.poetry.dev-dependencies]
+better-exceptions = "^0.3.3"
+black = "^23.1.0"
+coverage = "^7.1.0"
+isort = "^5.12.0"
+mypy = "^0.960"
+pre-commit = "^2.19.0"
+pytest = "^7.1.2"
+pytest-asyncio = "^0.21.0"
+pytest-clarity = "^1.0.1"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.7.0"
+pytest-picked = "^0.4.6"
+pytest-pretty = "^1.1.0"
+pytest-sugar = "^0.9.7"
+python-lsp-ruff = "^1.0.5"
+rich = "^13.3.5"
+ruff = "^0.0.228"
+setuptools = "^62.3.2"
+tox = "^3.25.0"
+
+[tool.mypy]
+python_version = "3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+filterwarnings = 'error'
+xfail_strict = true
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (from %(filename)s:%(lineno)s in %(funcName)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+[tool.pyright]
+pythonVersion = "3.11"
+include = ["src"]
+exclude = [
+  "**/node_modules",
+  "**/__pycache__",
+  "src/experimental",
+  "src/typestubs",
+  "src/**/old_*",
+  "src/old_*",
+  ".venv",
+  "old*",
+  "lib/*",
+  ".venv/**",
+  "lib/**",
+]
+venvPath = "."
+venv = ".venv"
+reportMissingImports = true
+reportMissingTypeStubs = false
+ignore = ["src/old*", ".venv/**"]
+basic = ["**"]
+
+[tool.ruff]
+line-length = 99
+select = ["ALL"]
+ignore = ["D10", "ANN", "T", "RET504"]
+fix = true
+unfixable = ["F401", "D202"]
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+target-version = "py311"
+cache-dir = "~/.cache/ruff"
+src = ["src", "test"]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.mccabe]
+max-complexity = 8
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["E402", "INP001"]
+"tests/*" = ["S101", "S301", "ARG", "FBT", "PLR2004", "E402", "INP001"]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+parallel = true
+omit = ["tests/*"]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+fail_under = 100
+exclude_lines = [
+  'pragma: no cover',
+  'raise NotImplementedError',
+  'if TYPE_CHECKING:',
+  '@overload',
+]
+
+[tool.black]
+color = true
+line-length = 99
+max-complexity = 8
+skip-string-normalization = true
+target-version = ['py311']
+
+[tool.isort]
+py_version = 311
+profile = "black"
+line_length = 99
+known_first_party = 'pydantic'
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+combine_as_imports = true
+skip_gitignore = true
