@@ -1,6 +1,6 @@
-# My Structlog Template
+# Structlog_in_Action
 
-This project provides a simple way to use `structlog` in your Python projects. It serves as a useful guide on how to use `structlog` and also as a quick setup for new projects. The project is written with Python 3.11 and uses `poetry` for package management.
+This project provides a simple way to use `structlog` in Python projects. It serves as a useful guide on how to use `structlog` and also as a quick setup for new projects. The project is written with Python 3.11 and uses `poetry` for package management.
 
 ## Overview
 
