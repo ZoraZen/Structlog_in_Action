@@ -36,5 +36,5 @@ async def test_strategyC(capsys, run_id):
 
     captured = capsys.readouterr()
     assert "Executing strategy C..." in captured.out
-    assert "An error occurred during strategy execution" in captured.out
+    assert "An error occurred during strategyC execution" in captured.out
     assert StrategyC.ERROR_MESSAGE in captured.out
