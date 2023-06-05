@@ -10,8 +10,6 @@ from strategies import StrategyC
 async def main():
     configure_logger()
 
-    log = structlog.get_logger(__name__)
-
     run_id = str(uuid.uuid4())
     log = structlog.get_logger(__name__).bind(run_id=run_id)
 
@@ -26,7 +24,7 @@ async def main():
             strategy_c.execute(),
         )
     except Exception as e:
-        log.exception("An error occurred during strategy execution", exception=str(e))
+        log.exception("An error occurred inside asyncio gather", exception=str(e))
     log.info("Application finished.")
 
 

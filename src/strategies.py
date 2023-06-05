@@ -3,6 +3,8 @@
 This module shows how logger work within strategy.
 """
 import asyncio
+import inspect
+
 import structlog
 
 
@@ -29,9 +31,13 @@ class StrategyB:
         )
 
     async def execute(self):
-        self.log.info("Executing strategy B...")
+        self.log.info(
+            "Executing strategy B...", function_name=inspect.currentframe().f_code.co_name
+        )
         await asyncio.sleep(3)
-        self.log.info("Strategy B execution finished.")
+        self.log.info(
+            "Strategy B execution finished.", function_name=inspect.currentframe().f_code.co_name
+        )
 
 
 class StrategyC:
@@ -51,4 +57,16 @@ class StrategyC:
             raise RuntimeError(self.ERROR_MESSAGE)
             self.log.info("Strategy C execution finished.")  # This line will never be reached
         except Exception as e:
-            self.log.exception("An error occurred during strategy execution", exception=str(e))
+            self.log.exception("An error occurred during strategyC execution", exception=str(e))
+
+
+if __name__ == "__main__":
+    from logger_config import configure_logger
+    import uuid
+
+    configure_logger()
+
+    run_id = str(uuid.uuid4())
+
+    strategy_a = StrategyA(run_id)
+    asyncio.run(strategy_a.execute())
