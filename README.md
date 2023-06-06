@@ -51,13 +51,15 @@ configure_logger()
 strategy_a = StrategyA('run_id')
 strategy_a.execute()
 ```
-This would execute StrategyA and log the execution.
+
+This would execute StrategyA and log.
 
 ### Note on StrategyC
 StrategyC is intentionally designed to fail to demonstrate error logging. When it is executed, it will raise a RuntimeError.
 
 ### Contributing
 Any contributions are welcome. Please feel free to open a Pull Request or an Issue.
+
 
 ### License
 This project is licensed under the MIT License. See LICENSE for more details.
