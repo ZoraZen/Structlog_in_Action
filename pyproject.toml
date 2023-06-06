@@ -11,6 +11,8 @@ packages = [{ include = "src" }]
 python = "3.11.*"
 structlog = "^22.1.0"
 asyncio = "^3.4.3"
+bpython = "^0.24"
+colorama = "^0.4.6"
 
 [tool.poetry.dev-dependencies]
 better-exceptions = "^0.3.3"
@@ -43,8 +45,8 @@ filterwarnings = 'error'
 xfail_strict = true
 log_cli = true
 log_cli_level = "INFO"
-log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (from %(filename)s:%(lineno)s in %(funcName)s)"
-log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+# log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (from %(filename)s:%(lineno)s in %(funcName)s)"
+# log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 
 [tool.pyright]
 pythonVersion = "3.11"

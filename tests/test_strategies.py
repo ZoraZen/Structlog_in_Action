@@ -1,3 +1,4 @@
+#test_strategies.py: This module is for test.
 import pytest
 from strategies import StrategyA
 from strategies import StrategyB
